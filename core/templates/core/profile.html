@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modificación de Perfil de Usuario</title>
+</head>
+<body>
+    <h2>Modificar Perfil</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Cambios</button>
+    </form>
+    <p><a href="{% url 'inicio' %}">Volver a Inicio</a></p>
+</body>
+</html>

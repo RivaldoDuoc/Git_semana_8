@@ -1,0 +1,504 @@
+/*IMPORTE DE FUENTE DE GOOGLE FONTS*/
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bungee+Tint&family=Lilita+One&family=Rubik+Mono+One&display=swap');
+
+
+/*ESTILOS PARA EL BODY */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222f3d;
+    color: #ecf1ef;
+    margin: 0;
+    padding: 20px;
+}
+
+#fondo {
+    margin: 20px;
+    background-color: #fffeff;
+}
+
+#banner {
+    width: 1700px;
+    height: 250px;
+}
+
+.contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+/* ENLACES DE BARRA DE NAVEGACION - Estilos */
+.nav-link {
+    color: #000; /* Color de texto predeterminado */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Transiciones suaves */
+}
+
+/* ENLACES DE BARRA NAVEGACION - Efecto hover */
+.nav-link:hover {
+    color: #fff; /* Color de texto al hacer hover */
+    background-color: #d4d4d4; /* Color de fondo al hacer hover */
+    border-radius: 5px; /* Un poco de redondeo en las esquinas al hacer hover */
+}
+
+/* DROPDOWN - Estilos para los elementos */
+.dropdown-menu a {
+    color: #000; /* Color de texto predeterminado */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Transiciones suaves */
+}
+
+/* DROPDOWN - Efecto hover para los elementos  */
+.dropdown-menu a:hover {
+    color: #fff; /* Color de texto al hacer hover */
+    background-color: #d4d4d4; /* Color de fondo al hacer hover */
+}
+
+
+.textos {
+    align-self: center;
+}
+
+/* BOTON DE REGISTRO */
+.boton {
+    float:right;
+    border: 5px solid rgb(132, 132, 141);
+    border-radius: 30px;
+    height: 50px;
+    background-color: #f0f0f0; /* Color de fondo inicial */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Transiciones suaves */
+}
+/* BOTON: Efecto hover */
+.boton:hover {
+    background-color: #afadad; /* Color de fondo al hacer hover */
+    border-color: #888888; /* Cambio en el color del borde al hacer hover */
+    cursor: pointer; /* Cambia el cursor al puntero */
+}
+
+.menu {
+    background: rgb(33, 0, 35);
+    color: #fff;
+    padding: 20px 30px;
+    text-decoration: none;
+}
+
+.categorias {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Pricing */
+.price {
+    font-size: 20px;
+    color: #f1c40f;
+    font-weight: bold;
+}
+
+/* Game containers */
+.game-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.game {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.game img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.game-info {
+    max-width: 600px;
+}
+
+/* Estilo del Footer */
+.footer {
+    position:fixed;
+    bottom: 0px;
+    background-color: black;
+    font-size: 10px;
+    height: 30px;
+    text-align: center;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    width: 100%;
+}
+
+/* Ajustes del botón */
+.btn.btn-primary {
+    font-size: 15px;
+    text-align: center;
+    justify-content: flex-end;
+    
+}
+
+/* Título Novedades */
+.novedades {
+    font-size: 48px;
+    color: #FFD700;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.5);
+    margin-bottom: 30px;
+}
+
+/*ESTILOS TARJETAS DE ARTICULOS EN TODAS LAS PAGINAS */
+.card {
+    height: 100%; /* Limita el tamaño de las tarjetas para que tengan la misma altura */
+}
+
+/* Ajustes a la descripción del texto*/
+.card-text {
+    font-size: 14px; /* Ajusta el tamaño del texto */
+    line-height: 1.6; /* Altura de línea de 1.6 para legibilidad */    
+    display: -webkit-box; /* Necesario para el efecto de truncado en varias líneas */
+    -webkit-box-orient: vertical; /* Define la orientación del contenido en el contenedor */
+    overflow: hidden; /* Oculta el texto que se desborda */
+    text-overflow: ellipsis; /* Muestra "..." al final del texto truncado */    
+    -webkit-line-clamp: 4; /* Limita el número de líneas a 4 */
+    max-height: calc(1.6em * 4); /* Define una altura máxima para 4 líneas */    
+}
+
+/* Estilo Responsivo */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
+    .navegador {
+        margin: 10px 0;
+    }
+}
+
+/* Ajuste de imagen para evitar distorsión */
+.card-img-top {
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+ }
+  
+.novedades h1 {
+    font-family: "Rubik Mono One", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    color: #5187a1;
+    text-shadow: 3px 3px 8px rgba(99, 8, 183, 0.5);
+}
+  
+/* Línea divisora */
+.novedades-linea {
+    width: 50%;
+    margin: 0 auto;
+    border: 0;
+    height: 3px;
+    background-color: #f7f4f7;
+    margin-bottom: 20px;
+}
+
+/* ESTILOS PARA EL FORMULARIO DE PAGINA DE REGISTRO */
+.formulario{
+    font-family: "Rubik Mono One", monospace;
+    font-weight: 400;
+    font-style: normal;
+    color: #f1f4f5;
+    background-color: #05089b;    
+}
+
+/*FORMULARIO - Contenedor*/
+.container .card {
+    background-color: #f0f8ff; /* Color de fondo del formulario */
+    border: 1px solid #b0c4de; /* Borde del formulario */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* FORMULARIO: Estilos para los campos de entrada */
+input.form-control, 
+select.form-control, 
+textarea.form-control {
+    background-color: #e6f7ff; /* Color de fondo de los campos */
+    border: 1px solid #7fbcd3; /* Borde de los campos */
+    padding: 10px; /* Espaciado interno de los campos */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Transiciones suaves */
+}
+
+/* FORMULARIO : Estilo cuando el usuario hace hover en los campos */
+input.form-control:hover, 
+select.form-control:hover, 
+textarea.form-control:hover {
+    background-color: #d0eafc; /* Color de fondo al pasar el mouse */
+    border-color: #4da3d9; /* Borde al pasar el mouse */
+}
+
+/* FORMULARIO : Estilo cuando el usuario hace focus (clic) en los campos */
+input.form-control:focus, 
+select.form-control:focus, 
+textarea.form-control:focus {
+    background-color: #cbe6fc; /* Color de fondo al hacer clic */
+    border-color: #1e81b0; /* Borde al hacer clic */
+    outline: none; /* Eliminamos el borde azul por defecto */
+    box-shadow: 0 0 5px rgba(30, 129, 176, 0.5); /* Sombra sutil al hacer clic */
+}
+
+/* FORMULARIO: Estilo para los botones */
+button.btn-primary {
+    background-color: #4da3d9; /* Color de fondo del botón Guardar */
+    border-color: #4da3d9; /* Borde del botón Guardar */
+}
+
+button.btn-primary:hover {
+    background-color: #1e81b0; /* Color de fondo del botón Guardar al pasar el mouse */
+    border-color: #1e81b0; /* Borde del botón Guardar al pasar el mouse */
+}
+
+button.btn-secondary {
+    background-color: #b0bcd3; /* Color de fondo del botón Limpiar */
+    border-color: #b0bcd3; /* Borde del botón Limpiar */
+}
+
+button.btn-secondary:hover {
+    background-color: #7f93a5; /* Color de fondo del botón Limpiar al pasar el mouse */
+    border-color: #7f93a5; /* Borde del botón Limpiar al pasar el mouse */
+}
+
+#formulario-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+/* INICIO DE SESIÓN Y RECUPERACION DE CONTRASEÑA*/
+.navbar .form-control {
+    margin-right: 5px;
+    min-width: 120px;
+}
+
+.container h2 {
+    margin-bottom: 20px;
+}
+  
+/* Estilo del contenedor de inicio de sesión */
+.container {
+    width: 10cm; /* Establece el ancho del contenedor a 10 cm */
+    padding: 20px; /* Espacio interno del contenedor */
+    border: 1px solid #ccc; /* Borde opcional */
+    border-radius: 5px; /* Esquinas redondeadas opcionales */
+    background-color: white; /* Color de fondo del contenedor */
+    align-items: center;
+}
+/* Estilo del contenedor de inicio de sesión */
+.login-container {
+    display: flex; /* Activa Flexbox en el contenedor */
+    flex-direction: column; /* Apilar los elementos de arriba hacia abajo */
+    align-items: center; /* Centrar los elementos horizontalmente */
+
+}
+
+/* Estilo de los inputs dentro del contenedor de inicio de sesión */
+.login-container input {    
+    width: 6cm; /* Establece el ancho de los inputs a 6 cm */
+    height: 25px; /* Ajusta la altura de los inputs (más compactos) */
+    margin-bottom: 0.5rem; /* Espacio entre inputs y el botón */
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+}
+
+/* Estilo del botón de inicio de sesión */
+.login-container .btn {
+    width: 3cm; /* Establece el ancho del botón a 3 cm */
+    height: 30px; /* Altura más compacta de los botones */
+    font-size: 0.75rem; /* Tamaño de fuente más pequeño */
+    color: white; /* Color del texto del botón */
+    margin-bottom: 0.5rem; /* Espacio entre el botón y el enlace */
+    align-items: center;
+    text-align: center;
+}
+
+/* Estilo del enlace de recuperación de contraseña */
+.login-container .btn-link {
+    padding-left: 0; /* Elimina padding izquierdo para alinear mejor */
+    font-size: 0.40rem; /* Tamaño de fuente más pequeño para el enlace */
+    display: block; /* Cambia el enlace a un bloque para poder centrarlo */
+    text-align: center; /* Centra el texto */    
+    margin-top: 0.1rem; /* Espacio arriba del enlace */
+    color: #1e81b0; /* Color del texto para el enlace */
+}
+
+/* Estilos generales para todos los elementos del contenedor */
+.login-container .btn, 
+.login-container input {
+    padding: 0.10rem; /* Reduce el espaciado interno uniforme */
+}
+
+/* Aumenta el ancho del botón de inicio de sesión */
+.login-container .btn {
+    width: 4cm; /* Hace que el botón ocupe todo el ancho del contenedor */
+    height: 25px; /* Ajusta la altura del botón si es necesario */
+    font-size: 0.7rem; /* Tamaño de fuente más pequeño, ajusta según sea necesario */
+    color: #1e81b0; /* Color del texto del botón */
+}
+
+
+.header-content {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    padding: 0 200px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.header-img {
+    flex-basis: 50%;
+    text-align: center;
+}
+
+.header-txt {
+    flex-basis: 50%;
+    text-align: center;
+}
+
+.header-txt h1 {
+    font-size: 50px;
+    text-transform: uppercase;
+    line-height: 1;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 15px;
+}
+
+.header-txt p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color:white;
+}
+
+/*IMÁGENES ESTILO DE ABAJO*/
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.image-gallery img {
+    width: calc(50% - 20px); /* Ajusta el ancho al 50% menos el espacio entre imágenes */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    border: 5px solid #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7);
+}
+
+/*ESTILO DEL PERFIL*/
+    .profile-header {
+         display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            margin-right: 20px;
+        }
+
+        .profile-header h1 {
+            margin: 0;
+        }
+
+        .section-header {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .card {
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .card-body {
+            padding: 1.25rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-text {
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .btn-primary {
+            margin-top: 0.5rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .info-personal {
+            margin-top: 20px;
+        }
+
+        .info-personal .row {
+            margin-bottom: 10px;
+        }
+
+        .info-personal .col-md-4 {
+            font-weight: bold;
+        }
+
+        .info-personal .col-md-8 {
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+
+        .recovery-container {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 10cm; /* Ancho del contenedor */
+            margin: auto; /* Centrar horizontalmente */
+        }
+        .text-danger {
+            display: none; /* Ocultar inicialmente el mensaje de error */
+        }
+
+        .text-success {
+            display: none; /* Ocultar inicialmente el mensaje de éxito */
+        }
+
+.login-container {
+    display: flex;
+    align-items: center;
+}

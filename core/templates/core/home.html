@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Título de la página -->
+        <div class="row mt-4">
+            <div class="col">
+                <h1>Listado de Productos</h1>
+                {% if user.is_authenticated %}
+                    <p>¡Bienvenido, {{ user.get_full_name }}! | 
+                        <a href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+                    </p>
+                {% else %}
+                    <p>No has iniciado sesión. <a href="{% url 'login' %}">Iniciar sesión</a></p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Tabla de productos -->
+        <div class="row mt-4">
+            <div class="col">
+                <h2>Productos disponibles</h2>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>SKU</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Categoría</th>
+                            <th>Stock</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for prod in productos %}
+                        <tr>
+                            <td>{{ prod.SKU_PROD }}</td>
+                            <td>{{ prod.NOMBRE_PROD }}</td>
+                            <td>{{ prod.PRECIO_PROD }}</td>
+                            <td>{{ prod.CATEGORIA.descripcion_categoria }}</td>
+                            <td>{{ prod.STOCK_PROD}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluir scripts de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

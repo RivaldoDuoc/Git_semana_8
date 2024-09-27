@@ -1,0 +1,125 @@
+{% load form_filters %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Producto</title>
+    <!-- Incluir Bootstrap para un mejor diseño -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Título de la página -->
+        <div class="row mt-4">
+            <div class="col">
+                <h1>Modificar Producto</h1>
+                {% if user.is_authenticated %}
+                    <p>¡Bienvenido, {{ user.username }}! | <a href="{% url 'cerrar_sesion' %}">Cerrar sesión</a></p>
+                {% else %}
+                    <p>No has iniciado sesión. <a href="{% url 'login' %}">Iniciar sesión</a></p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Formulario para modificar productos -->
+        {% if is_staff or is_editor %}
+        <div class="row">
+            <div class="col-md-8">
+                <form method="post" enctype="multipart/form-data" id="formulario">
+                    {% csrf_token %}
+                    
+                    <!-- SKU del Producto -->
+                    <div class="mb-3">
+                        <label for="SKU_PROD" class="form-label">SKU Producto</label>
+                        {{ form.SKU_PROD|add_class:"form-control" }}
+                    </div>
+
+                    <!-- Nombre del Producto -->
+                    <div class="mb-3">
+                        <label for="NOMBRE_PROD" class="form-label">Nombre Producto</label>
+                        {{ form.NOMBRE_PROD|add_class:"form-control" }}
+                    </div>
+
+                    <!-- Descripción del Producto -->
+                    <div class="mb-3">
+                        <label for="DESCRIPCION" class="form-label">Descripción</label>
+                        {{ form.DESCRIPCION|add_class:"form-control" }}
+                    </div>
+
+                    <!-- Precio del Producto -->
+                    <div class="mb-3">
+                        <label for="PRECIO_PROD" class="form-label">Precio</label>
+                        {{ form.PRECIO_PROD|add_class:"form-control" }}
+                    </div>
+
+                    <!-- Categoría del Producto -->
+                    <div class="mb-3">
+                        <label for="CATEGORIA" class="form-label">Categoría</label>
+                        {{ form.CATEGORIA|add_class:"form-control" }}
+                    </div>
+
+                    <!-- Imagen del Producto -->
+                    <div class="mb-3">
+                        <label for="IMAGEN" class="form-label">Imagen</label>
+                        {{ form.IMAGEN|add_class:"form-control" }}
+                    </div>
+
+                    <!-- Stock del Producto -->
+                    <div class="mb-3">
+                        <label for="STOCK_PROD" class="form-label">Stock</label>
+                        {{ form.STOCK_PROD|add_class:"form-control" }}
+                    </div>
+
+                    <!-- Botones de acción -->
+                    <div class="mb-3">
+                        <input type="submit" class="btn btn-warning" value="Modificar">
+                        <input type="reset" class="btn btn-secondary" value="Limpiar">
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-warning mt-3">
+            No tienes permisos para acceder a esta página.
+        </div>
+        {% endif %}
+
+        <!-- Tabla de productos para seleccionar -->
+        <div class="row mt-5">
+            <div class="col">
+                <h2>Listado de Productos</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>SKU</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Categoría</th>
+                            <th>Acción</th> <!-- Columna para la acción de seleccionar -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for prod in productos %}
+                        <tr>
+                            <td>{{ prod.SKU_PROD }}</td>
+                            <td>{{ prod.NOMBRE_PROD }}</td>
+                            <td>{{ prod.PRECIO_PROD }}</td>
+                            <td>{{ prod.CATEGORIA.descripcion_categoria }}</td>
+                            <td>
+                                <!-- Botón para seleccionar el producto -->
+                                <a href="{% url 'form_mod_producto_sku' prod.SKU_PROD %}" class="btn btn-primary">Seleccionar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluir Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

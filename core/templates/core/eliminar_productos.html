@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Producto</title>
+    <!-- Incluir Bootstrap para un mejor diseño -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Título de la página -->
+        <div class="row">
+            <div class="col">
+                <h1>Eliminar Producto</h1>
+                {% if user.is_authenticated %}
+                    <p>¡Bienvenido, {{ user.username }}! | <a href="{% url 'cerrar_sesion' %}">Cerrar sesión</a></p>
+                {% else %}
+                    <p>No has iniciado sesión. <a href="{% url 'login' %}">Iniciar sesión</a></p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Mensaje de advertencia -->
+        <div class="row">
+            <div class="col">
+                <p>Selecciona un producto de la lista para eliminarlo:</p>
+            </div>
+        </div>
+
+        <!-- Tabla que muestra los productos con un botón de eliminar -->
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>SKU</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Categoría</th>
+                            <th>Acciones</th> <!-- Columna para la acción de eliminar -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for prod in productos %}
+                        <tr>
+                            <td>{{ prod.SKU_PROD }}</td>
+                            <td>{{ prod.NOMBRE_PROD }}</td>
+                            <td>{{ prod.PRECIO_PROD }}</td>
+                            <td>{{ prod.CATEGORIA.descripcion_categoria }}</td>
+                            <td>
+                                <!-- Formulario para eliminar el producto -->
+                                <form method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?');">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="sku" value="{{ prod.SKU_PROD }}">
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </form>
+                            </td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incluir Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

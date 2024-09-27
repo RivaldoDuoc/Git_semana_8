@@ -1,0 +1,167 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <title>Game on Categoria Familiar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<br>
+
+<body id="fondo" background="{% static 'img/background.png'%}"> 
+  <!--BOTÓN PARA ACCEDER AL REGISTRO-->
+  <div class="login-container" style="position: absolute; right: 3rem; top: 1rem; z-index: 999;">
+    <form class="d-flex" role="search" onsubmit="openRegistro(event)">
+      <button class="btn btn-outline-primary" type="submit">Acceder o Registrarse</button>
+    </form>
+  </div>
+
+  <!-- SCRIPT PARA ABRIR FORMULARIO DE REGISTRO-->
+  <script>
+    function openRegistro(event) {
+        event.preventDefault(); // Evita que el formulario se envíe
+        window.location.href = "{% url 'registro' %}"; // Redirige a la página de registro en la misma pestaña
+    }
+  </script>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}"></a>
+        <strong>Game On</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categorías
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'accion' %}">Acción</a></li>
+              <li><a class="dropdown-item" href="{% url 'familiar' %}">Familiar</a></li>
+              <li><a class="dropdown-item" href="{% url 'deportes' %}">Deportes</a></li>
+              <li><a class="dropdown-item" href="{% url 'horror' %}">Horror</a></li>
+              <li><a class="dropdown-item" href="{% url 'rpg1' %}">RPG</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mailto:contacto@gmail.com">Contacto</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Busca tu juego" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <img src="{% static 'img/banner.png'%}" class="card-img" alt="banner">
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="novedades">
+    <h1 id="titulo-novedades">Juegos para toda la familia</h1>
+    <hr class="novedades-linea">
+    <!-- Desde aquí hacia arriba se debe mantener el diseño en todas las páginas -->
+    <div class="row justify-content-center">
+      <!-- Mario Party -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100 text-center d-flex flex-column">
+          <img src="{% static 'img/marioparty.png'%}" alt="Mario Party" class="img-fluid" style="object-fit: cover; height: 300px;">          
+          <div class="card-body d-flex flex-column">
+            <h2 class="card-title">Mario Party</h2>
+            <p class="card-text">
+              ¡Prepárate para la fiesta definitiva con Mario Party! Une fuerzas con amigos y familiares en una serie
+              de minijuegos locos y desafiantes mientras compites en tableros llenos de sorpresas y trampas. Con
+              personajes icónicos de Mario y una variedad de modos de juego, Mario Party garantiza risas y emoción en
+              cada turno. ¿Estás listo para ganar estrellas, hacer travesuras y demostrar que eres el rey de la
+              fiesta?
+            </p>
+            <p class="price">$39.990</p>
+            <a href="#" class="btn btn-primary mt-auto">Agregar al Carrito</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Just Dance -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100 text-center d-flex flex-column">
+          <img src="{% static 'img/justdance.png'%}" alt="Just Dance" class="img-fluid" style="object-fit: cover; height: 300px;">          
+          <div class="card-body d-flex flex-column">
+            <h2 class="card-title">Just Dance</h2>
+            <p class="card-text">
+              Just Dance transforma tu sala de estar en una pista de baile vibrante. Con una vasta selección de éxitos
+              musicales y coreografías llenas de energía, es el juego perfecto para reunir a amigos y familiares en
+              una fiesta inolvidable. Desde los últimos éxitos pop hasta clásicos atemporales, elige tu canción
+              favorita y muestra tus mejores movimientos. ¡Siente el ritmo, diviértete y convierte cada sesión de
+              baile en una celebración de ritmo y diversión sin fin!
+            </p>
+            <p class="price">$39.990</p>
+            <a href="#" class="btn btn-primary mt-auto">Agregar al Carrito</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fall Guys -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100 text-center d-flex flex-column">
+          <img src="{% static 'img/fallguys.png'%}" alt="Fall Guys" class="img-fluid" style="object-fit: cover; height: 300px;">          
+          <div class="card-body d-flex flex-column">
+            <h2 class="card-title">Fall Guys</h2>
+            <p class="card-text">
+              Fall Guys es un juego de batalla real lleno de caos y diversión. Compite contra otros jugadores en una
+              serie de desafiantes mini-juegos y carreras en un entorno colorido y lleno de obstáculos. ¿Podrás
+              superar a tus rivales y convertirte en el último sobreviviente en esta fiesta de locura? Prepárate para
+              reír y disfrutar de una experiencia única y entretenida.
+            </p>
+            <p class="price">$29.990</p>
+            <a href="#" class="btn btn-primary mt-auto">Agregar al Carrito</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overcooked -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100 text-center d-flex flex-column">
+          <img src="{% static 'img/overcooked.png'%}" alt="Overcooked" class="img-fluid" style="object-fit: cover; height: 300px;">
+          <div class="card-body d-flex flex-column">
+            <h2 class="card-title">Overcooked</h2>
+            <p class="card-text">
+              Overcooked es un frenético juego de cocina en el que los jugadores deben colaborar para preparar y
+              servir platos en una variedad de escenarios caóticos. Con niveles cada vez más desafiantes y una
+              jugabilidad cooperativa adictiva, es ideal para jugar con amigos y familiares. Coordina tus acciones,
+              maneja los pedidos y evita el caos culinario para convertirte en el chef maestro.
+            </p>
+            <p class="price">$34.990</p>
+            <a href="#" class="btn btn-primary mt-auto">Agregar al Carrito</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+</body>
+<footer class="footer fixed-bottom">
+  <p>
+    <center> Diseñado por Grupo 2 - Programación Web - Copyright 2024©</center>
+  </p>
+</footer>
+
+</html>

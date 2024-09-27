@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panel de control </title>
+</head>
+<body>
+    <h2>Bienvenido, {{ user.get_full_name }}</h2>
+    <p><a href="{% url 'home' %}">Listado de Productos</a></p>
+    <p><a href="{% url 'form_producto' %}">Crear Producto</a></p>
+    <p><a href="{% url 'form_mod_producto' %}">Modificar Producto</a></p>
+    <p><a href="{% url 'eliminar_productos' %}">Eliminar Producto</a></p>
+    <p><a href="{% url 'profile_edit' %}">Modificar Perfil</a></p>
+  
+
+
+    {% if user.tipo_usuario.nombre_tipo_usuario == "admin" %}
+        <h3>Panel Usuario Administrador</h3>
+        <p><a href="{% url 'form_producto' %}">Crear Producto</a></p>
+        <p><a href="{% url 'eliminar_productos' %}">Eliminar Productos</a></p>
+        <p><a href="{% url 'form_mod_producto' %}">Modificar Producto</a></p>
+        <p><a href="{% url 'home' %}">Visualizar Productos</a></p>    
+        <p><a href="{% url 'profile_edit' %}">Modificar Perfil</a></p>    
+
+    {% elif user.tipo_usuario.nombre_tipo_usuario == "editor" %}
+        <h3>Panel Usuario Editor</h3>
+        <p><a href="{% url 'form_mod_producto' %}">Modificar Producto</a></p>
+        <p><a href="{% url 'home' %}">Visualizar Productos</a></p>
+        <p><a href="{% url 'profile_edit' %}">Modificar Perfil</a></p>  
+    
+    {% elif user.tipo_usuario.nombre_tipo_usuario == "viewer" %}
+        <h3>Panel Usuario Viewer</h3>
+        <p><a href="{% url 'home' %}">Visualizar Productos</a></p>
+        <p><a href="{% url 'profile_edit' %}">Modificar Perfil</a></p>  
+    {% endif %}
+</body>
+</html>
