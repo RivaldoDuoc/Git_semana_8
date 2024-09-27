@@ -2,16 +2,19 @@ from django.shortcuts import render
 from core.models import Producto, Categoria, Cliente
 from . serializers import ProductoSerializer, CategoriaSerializer, ClienteSerializer
 from rest_framework.response import Response
-from rest_framework.decorators import api_view #convierte función en vista de API
+from rest_framework.decorators import api_view, permission_classes 
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from rest_framework import status
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 #VISTAS PARA CREAR Y LISTAR OBJETOS DE LA COLECCION
 #vista de CATEGORIA
 @csrf_exempt
 @api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
 def lista_categorias(request):
     # Manejo de solicitudes GET para listar categorías
     if request.method == 'GET':
@@ -33,6 +36,7 @@ def lista_categorias(request):
 #vista de PRODUCTO
 @csrf_exempt
 @api_view (['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
 def lista_productos(request):
     # Manejo de solicitudes GET para listar productos
     if request.method =='GET':
@@ -55,6 +59,7 @@ def lista_productos(request):
 #vista para CLIENTE
 @csrf_exempt
 @api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
 def lista_clientes(request):
     # Manejo de solicitudes GET para listar clientes
     if request.method == 'GET':
@@ -77,6 +82,7 @@ def lista_clientes(request):
 # Vista para Categoría
 @csrf_exempt
 @api_view(['GET', 'DELETE', 'PUT', 'PATCH'])
+@permission_classes((IsAuthenticated,))
 def vista_categorias(request, id):
     try:
         # Intentamos obtener la categoría con el ID especificado
@@ -108,6 +114,7 @@ def vista_categorias(request, id):
 
 @csrf_exempt
 @api_view(['GET', 'DELETE', 'PUT', 'PATCH'])
+@permission_classes((IsAuthenticated,))
 def vista_productos(request, SKU_PROD):
     # Verifica qué valor de SKU_PROD está recibiendo la vista
     print("SKU_PROD recibido:", SKU_PROD)  
@@ -151,6 +158,7 @@ def vista_productos(request, SKU_PROD):
 # Vista para Cliente
 @csrf_exempt
 @api_view(['GET', 'DELETE', 'PUT', 'PATCH'])
+@permission_classes((IsAuthenticated,))
 def vista_clientes(request, id_cliente):
     try:
         # Intentamos obtener el cliente con el ID especificado

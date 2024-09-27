@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import registro, user_login
 from .views import modificar_perfil
-
+from rest_api.viewsLogin import inicio_token
 
 urlpatterns = [
     path('', index, name="index"),
@@ -42,7 +42,9 @@ urlpatterns = [
     # Registro de usuarios
     path('registro_usuario/', registro, name='registro_usuario'),
     path('login/', user_login, name='login'),
-    
+
+    #Token
+    path('inicio_token/', inicio_token, name='login'),
     # Recuperación de contraseña y perfil
     # path('password_recovery/', password_recovery, name='password_recovery'),
     # path('profile_edit/', profile_edit, name='profile_edit'),

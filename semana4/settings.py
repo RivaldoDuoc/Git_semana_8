@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'core',  # MI aplicación
     'rest_framework', #Framework Django para API
     'rest_api', #aplicación API REST
+    'rest_framework.authtoken', #para seguridad Token
 ]
 
 MIDDLEWARE = [
@@ -89,6 +90,12 @@ DATABASES = {
             'TBLSPACE_TMP': 'default_test_tbls_tmp',
         },
     }
+}
+
+REST_FRAMEWORK={
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.authentication.TokenAuthentication', #para autenticación de token
+    ]
 }
 
 # Password validation
