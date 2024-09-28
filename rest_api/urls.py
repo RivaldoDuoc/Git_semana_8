@@ -10,8 +10,5 @@ urlpatterns = [
     path('productos/<str:SKU_PROD>/', views.vista_productos, name='vista_productos'),
     path('categorias/<int:id>/', views.vista_categorias, name='vista_categorias'),
     path('clientes/<int:id_cliente>/', views.vista_clientes, name='vista_clientes'),
-
-
-
     
 ]

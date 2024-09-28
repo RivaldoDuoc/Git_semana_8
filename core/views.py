@@ -7,7 +7,7 @@ from .models import Producto
 from .forms import ProductoForm, UsuarioForm, RegistroUsuarioForm
 from django.contrib.auth.forms import AuthenticationForm, UserChangeForm, UserCreationForm
 from .forms import CustomUserChangeForm
-
+import requests
 
 
 # Función para iniciar sesión de usuario
@@ -24,9 +24,8 @@ def user_login(request):
 
 
 # Vista del índice (página principal)
-def index(request):
+def obtener_valores_economicos(request):
     return render(request, 'index.html')
-
 
 # Funciones que retornan vistas estáticas de juegos
 def callofduty(request):
@@ -55,6 +54,12 @@ def fallguys(request):
 
 def godofwar(request):
     return render(request, 'godofwar.html')
+
+def obtener_juegos2(request):
+    return render(request, 'juegos_template.html')
+
+def obtener_personajes(request):
+    return render(request, 'personajes_template.html')
 
 
 # Vista para el perfil del usuario
@@ -270,3 +275,57 @@ def modificar_perfil(request):
         form = CustomUserChangeForm(instance=request.user)
 
     return render(request, 'core/modificar_perfil.html', {'form': form})
+
+
+
+#CONSUMO API BEBESTIBLES
+@login_required
+def bebestibles(request):
+    # URL de la API de Rick and Morty
+    url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
+    
+    try:
+        # Realizamos la solicitud GET a la API
+        response = requests.get(url)
+        
+        # Verificamos si la respuesta es exitosa (código 200)
+        if response.status_code == 200:
+            datos = response.json()  # Convertimos los datos en formato JSON
+            drinks = datos.get('drinks', [])  # Obtenemos la lista de tragos
+        else:
+            drinks = {"error": "No se pudo obtener la información de la API"}
+
+    except requests.exceptions.RequestException as e:
+        drinks = {"error": str(e)}
+    
+    # Pasamos la lista de tragos obtenidos al template
+    return render(request, 'bebestibles.html', {'drinks': drinks})
+            
+
+#API DE VALORES ECONOMICOS
+def obtener_valores_economicos(request):
+    # URL de la API de Mindicador
+    url = "https://mindicador.cl/api"
+    
+    try:
+        # Realizamos la solicitud GET a la API
+        response = requests.get(url)
+        
+        # Verificamos si la respuesta es exitosa (código 200)
+        if response.status_code == 200:
+            datos = response.json()  # Convertimos los datos en formato JSON
+            valor_uf = datos['uf']['valor']  # Valor de la UF
+            valor_dolar = datos['dolar']['valor']  # Valor del dólar
+        else:
+            valor_uf = 'Error obteniendo valor UF'
+            valor_dolar = 'Error obteniendo valor Dólar'
+
+    except requests.exceptions.RequestException as e:
+        valor_uf = f"Error: {str(e)}"
+        valor_dolar = f"Error: {str(e)}"
+    
+    # Pasamos los valores obtenidos al template
+    return render(request, 'index.html', {
+        'valor_uf': valor_uf,
+        'valor_dolar': valor_dolar
+    })

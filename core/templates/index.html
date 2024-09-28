@@ -13,6 +13,12 @@
 
 <!--BOTÓN PARA ACCEDER AL REGISTRO-->
 <body id="fondo" background="{% static 'img/background.png'%}">
+  <div class="container mt-3">
+    <div id="valores-economicos" class="alert alert-info text-center" role="alert">
+      <strong>UF:</strong> <span id="valor-uf">{{ valor_uf }}</span> |
+      <strong>Dólar:</strong> <span id="valor-dolar">{{ valor_dolar }}</span>
+    </div>
+  </div>
   <div class="login-container" style="position: absolute; right: 3rem; top: 1rem; z-index: 999;">
     <form class="d-flex" role="search" onsubmit="openRegistro(event)">
         <button class="btn btn-outline-primary" type="submit">Acceder o Registrarse</button>

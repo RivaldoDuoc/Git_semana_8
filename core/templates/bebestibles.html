@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tragos</title>
+</head>
+<body>
+    <h1>Bebestibles para amenizar los juegos</h1>
+
+    {% if drinks.error %}
+        <p>Error: {{ drinks.error }}</p>
+    {% else %}
+        <ul>
+            {% for x in drinks %}
+                <li>
+                    <h2>{{ x.strDrink }}</h2>
+                    <p>Categoria : {{ x.strCategory }}</p>
+                    <p>Tipo : {{ x.strGlass }}</p>
+                    <img src="{{ x.strDrinkThumb }}" alt="Imagen de {{ x.strDrink }}" style="width:150px;">
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
